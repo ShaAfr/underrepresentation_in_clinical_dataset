@@ -1,4 +1,4 @@
-# Underrepresentation_in_clinical_dataset
+# Underrepresentation in clinical dataset (MIMIC III Dataset and SEER Cancer Dataset)
 
 
 The directory contains the preprocessing code for training data generation for DP, as well as result processing regarding model selection and
