@@ -9,8 +9,8 @@ MIMIC-III analysis steps
 5.	The training data is in mimic3-benchmarks/data/in-hospital-mortality/train_listfile.csv
 6.	Run the following command to save the output in run_output.txt file.
  `sh run_command.sh &>> run_output.txt`
-7.	Determine the epoch from where we get the final model. Input run_output.txt in 1_epoch_to_consider.ipynb (underrepresentation_in_clinical_dataset/codes/mimic/result_processing/1_epoch_to_consider.ipynb)
-8.	Check the run_output.txt file and find out the model name for the specific epoch. For example, is the chosen epoch is 60, you can see a similar line in the run_output.txt file.
+7.	Determine the epoch from where we get the final model. Input run_output.txt in 1_epoch_to_consider.ipynb (`underrepresentation_in_clinical_dataset/codes/mimic/result_processing/1_epoch_to_consider.ipynb`)
+8.	Check the `run_output.txt` file and find out the model name for the specific epoch. For example, is the chosen epoch is 60, you can see a similar line in the run_output.txt file.
 `Epoch 00060: saving model to mimic3models/in_hospital_mortality/keras_states/{model_name}.state`
 9.	You test the model using the following command. 
 `python -um mimic3models.in_hospital_mortality.main --network mimic3models/keras_models/lstm.py --dim 16 --depth 2 --batch_size 8 --dropout 0.3 --timestep 1.0 --load_state mimic3models/in_hospital_mortality/keras_states/{model_name}.state --mode test`
@@ -20,8 +20,8 @@ MIMIC-III analysis steps
 
 ### DP Sampling (Modification of General Instructions)
 1.	At step 5 of general instruction, we will change the change listfile for undersampling and oversampling. 
-2.	For our proposed DP sampling in training data, use the existing training_listfile.csv file as input to the ipynb file of chosen minority group in underrepresentation_in_clinical_dataset/codes/mimic/training_data_processing/dp/
+2.	For our proposed DP sampling in training data, use the existing training_listfile.csv file as input to the ipynb file of chosen minority group in `underrepresentation_in_clinical_dataset/codes/mimic/training_data_processing/dp/`
 3.	The ipynb file will generate 14 files (2 units to 20 units added training files). 
 4.	Follow the general instruction 6-11 with generated 14 training files. 
-5.	Use dp_unit_choice.ipynb file to identify which unit has optimum repetition of under represented population. 
-6.	Fing the performance of any specific underrepresented subgroup now with the chosen unit from previous step with 3_results in subgroups.ipynb file.
+5.	Use `dp_unit_choice.ipynb` file to identify which unit has optimum repetition of under represented population. 
+6.	Fing the performance of any specific underrepresented subgroup now with the chosen unit from previous step with `3_results in subgroups.ipynb` file.
