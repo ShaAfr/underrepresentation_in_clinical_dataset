@@ -1,7 +1,7 @@
 MIMIC-III analysis steps
 =========================
 
-### General Instruction
+### General Instruction (in-hopsital mortality prediction)
 1.	MIMIC III dataset can be downloaded from https://mimic.physionet.org/
 2.	We construct benchmark machine learning dataset from https://github.com/YerevaNN/mimic3-benchmarks using MIMIC III dataset
 3.	In the Benchmark GitHub, please follow the six steps specified in “Building a benchmark” subsection to create benchmark machine learning dataset for In-hospital mortality and decompensation prediction task. 
@@ -25,3 +25,5 @@ MIMIC-III analysis steps
 4.	Follow the general instruction 6-11 with generated 14 training files. 
 5.	Use `dp_unit_choice.ipynb` file to identify which unit has optimum repetition of under represented population. 
 6.	Fing the performance of any specific underrepresented subgroup now with the chosen unit from previous step with `3_results in subgroups.ipynb` file.
+
+Note: for decompensation, the steps are similar. Just need to run decompansation commands and access decompensation train_listfile.csv
