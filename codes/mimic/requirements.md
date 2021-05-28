@@ -28,3 +28,4 @@
 - Core(TM) i7-8550U CPU @ 1.80GHz
 - 64-bit operating system, x64-based processor
 - 16 GB RAM
+- Runtime: Less than 1 minute
