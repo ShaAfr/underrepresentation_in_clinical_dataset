@@ -16,14 +16,14 @@
 
 ## Requirements for the preprocessing codes & postprocessing codes (i.e., jupyter notebook files)
 
-#### used Python package version
+#### Used Python package version
 
 - python==3.8.5
 - pandas==1.2.1
 - scikit-learn==0.23.2
 - numpy==1.19.2
 
-#### operating system used to run provided jupyter notebooks
+#### Operating system used to run provided jupyter notebooks
 
 - Core(TM) i7-8550U CPU @ 1.80GHz
 - 64-bit operating system, x64-based processor
