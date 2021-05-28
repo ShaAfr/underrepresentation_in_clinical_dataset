@@ -11,3 +11,6 @@
 - 8 cores
 - 40 GB RAM
 - 1 GPU
+-  Runtime: 
+        - Training time 6 hours to 10 hours depending on the number of epoch and prediction task
+        - Testing time 2 min to 1 hour depending on the prediction task
