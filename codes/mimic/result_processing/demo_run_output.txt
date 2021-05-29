@@ -1,0 +1,134 @@
+Using TensorFlow backend.
+Namespace(batch_norm=False, batch_size=8, beta_1=0.9, data='/home/mimic3-benchmarks/mimic3models/in_hospital_mortality/../../data/in-hospital-mortality/', depth=2, dim=16, dropout=0.3, epochs=100, imputation='previous', l1=0, l2=0, load_state='', lr=0.001, mode='train', network='mimic3models/keras_models/lstm.py', normalizer_state=None, optimizer='adam', output_dir='mimic3models/in_hospital_mortality', prefix='', rec_dropout=0.0, save_every=1, size_coef=4.0, small_part=False, target_repl_coef=0.0, timestep=1.0, verbose=2)
+==> using model mimic3models/keras_models/lstm.py
+==> not used params in network class: dict_keys(['batch_size', 'beta_1', 'data', 'epochs', 'imputation', 'l1', 'l2', 'load_state', 'lr', 'mode', 'network', 'normalizer_state', 'optimizer', 'output_dir', 'prefix', 'save_every', 'size_coef', 'small_part', 'target_repl_coef', 'timestep', 'verbose', 'header'])
+WARNING:tensorflow:From /home/anaconda3/envs/shaenvgpu/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:1364: calling reduce_any (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+WARNING:tensorflow:From /home/anaconda3/envs/shaenvgpu/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:1247: calling reduce_sum (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+==> model.final_name: k_lstm.n16.d0.3.dep2.bs8.ts1.0
+==> compiling the model
+WARNING:tensorflow:From /home/anaconda3/envs/shaenvgpu/lib/python3.6/site-packages/keras/backend/tensorflow_backend.py:1349: calling reduce_mean (from tensorflow.python.ops.math_ops) with keep_dims is deprecated and will be removed in a future version.
+Instructions for updating:
+keep_dims is deprecated, use keepdims instead
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+X (InputLayer)               (None, None, 76)          0         
+_________________________________________________________________
+masking_1 (Masking)          (None, None, 76)          0         
+_________________________________________________________________
+bidirectional_1 (Bidirection (None, None, 16)          5440      
+_________________________________________________________________
+lstm_2 (LSTM)                (None, 16)                2112      
+_________________________________________________________________
+dropout_1 (Dropout)          (None, 16)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 1)                 17        
+=================================================================
+Total params: 7,569
+Trainable params: 7,569
+Non-trainable params: 0
+_________________________________________________________________
+==> training
+Train on 25388 samples, validate on 3222 samples
+Epoch 1/100
+==>predicting on train
+
+confusion matrix:
+[[10056  2638]
+ [ 3249  9445]]
+accuracy = 0.7681187987327576
+precision class 0 = 0.7558060884475708
+precision class 1 = 0.781676709651947
+recall class 0 = 0.7921853065490723
+recall class 1 = 0.7440522909164429
+AUC of ROC = 0.8478535331125252
+AUC of PRC = 0.8402098197045387
+min(+P, Se) = 0.7697518708152816
+
+==>predicting on validation
+
+
+confusion matrix:
+[[2157  629]
+ [ 111  325]]
+accuracy = 0.7703289985656738
+precision class 0 = 0.9510582089424133
+precision class 1 = 0.3406708538532257
+recall class 0 = 0.7742282748222351
+recall class 1 = 0.7454128265380859
+AUC of ROC = 0.8319900617109137
+AUC of PRC = 0.4802660816557488
+min(+P, Se) = 0.48072562358276644
+Epoch 00001: saving model to mimic3models/in_hospital_mortality/keras_states/k_lstm.n16.d0.3.dep2.bs8.ts1.0.epoch1.test0.4814785805864411.state
+ - 944s - loss: 0.5573 - val_loss: 0.4815
+Epoch 2/100
+
+==>predicting on train
+
+
+confusion matrix:
+[[ 9584  3110]
+ [ 1587 11107]]
+accuracy = 0.8149913549423218
+precision class 0 = 0.8579357266426086
+precision class 1 = 0.7812477946281433
+recall class 0 = 0.7550023794174194
+recall class 1 = 0.8749803304672241
+AUC of ROC = 0.8980422177721411
+AUC of PRC = 0.889796837296744
+min(+P, Se) = 0.8177879313061289
+
+==>predicting on validation
+
+
+confusion matrix:
+[[2064  722]
+ [  90  346]]
+accuracy = 0.7479826211929321
+precision class 0 = 0.9582172632217407
+precision class 1 = 0.3239700496196747
+recall class 0 = 0.740847110748291
+recall class 1 = 0.7935779690742493
+AUC of ROC = 0.841457039456786
+AUC of PRC = 0.49410934055943884
+min(+P, Se) = 0.48853211009174313
+Epoch 00002: saving model to mimic3models/in_hospital_mortality/keras_states/k_lstm.n16.d0.3.dep2.bs8.ts1.0.epoch2.test0.48311918765805956.state
+ - 969s - loss: 0.4909 - val_loss: 0.4831
+Epoch 3/100
+
+==>predicting on train
+
+
+confusion matrix:
+[[11111  1583]
+ [ 2583 10111]]
+accuracy = 0.8359067440032959
+precision class 0 = 0.811377227306366
+precision class 1 = 0.8646314144134521
+recall class 0 = 0.8752954006195068
+recall class 1 = 0.7965180277824402
+AUC of ROC = 0.9166092830107051
+AUC of PRC = 0.9139101270030355
+min(+P, Se) = 0.8404758153458327
+
+==>predicting on validation
+
+
+confusion matrix:
+[[2409  377]
+ [ 172  264]]
+accuracy = 0.8296089172363281
+precision class 0 = 0.9333591461181641
+precision class 1 = 0.411856472492218
+recall class 0 = 0.8646805286407471
+recall class 1 = 0.60550457239151
+AUC of ROC = 0.8382393619473515
+AUC of PRC = 0.4901845215810751
+min(+P, Se) = 0.481651376146789
+Epoch 00003: saving model to mimic3models/in_hospital_mortality/keras_states/k_lstm.n16.d0.3.dep2.bs8.ts1.0.epoch3.test0.3715543092629097.state
+ - 945s - loss: 0.4393 - val_loss: 0.3716
+
