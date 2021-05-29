@@ -10,4 +10,4 @@ Title: Subpopulation-specific Machine Learning Prognosis for Underrepresented Pa
 MedRxiv DOI:10.1101/2021.03.26.21254401
 Year: 2021
 ```
-Instructions to use the codes are provided in their corresponding folders
+Instructions to use the codes are provided in their corresponding folders.
