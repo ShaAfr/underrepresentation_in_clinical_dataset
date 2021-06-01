@@ -1,0 +1,11 @@
+auc = 0.46482889733840305
+f1 = 0.9633699633699635
+acc = 0.9293286219081273
+balanced_accuracy = 0.5
+precision class 1 = 0.9293286219081273
+recall class 1 = 1.0
+f1 class 0 = nan
+precision class 0 = nan
+recall class 0 = 0.0
+FPR = 1.0
+FNR = 0.0

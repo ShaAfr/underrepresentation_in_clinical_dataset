@@ -1,0 +1,9 @@
+total
+1 2575
+0 256
+training
+1 2048
+0 216
+validating
+1 263
+0 20
