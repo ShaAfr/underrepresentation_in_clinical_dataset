@@ -1,0 +1,101 @@
+﻿Requirements for SEER dataset code
+
+
+Python package version requirements to run SEER dataset code
+* absl-py==0.1.10
+* bleach==2.1.2
+* cycler==0.10.0
+* edward==1.3.5
+* enum34==1.1.6
+* graphviz==0.8.2
+* html5lib==1.0.1
+* Keras==2.1.4
+* Markdown==2.6.11
+* matplotlib==2.1.2
+* numpy==1.14.0
+* pandas==0.22.0
+* protobuf==3.5.1
+* pydot-ng==1.0.0
+* pyparsing==2.2.0
+* python-dateutil==2.6.1
+* pytz==2018.3
+* PyYAML==3.12
+* scikit-learn==0.19.1
+* scipy==1.0.0
+* six==1.11.0
+* tensorflow==1.5.0
+* tensorflow-tensorboard==1.5.1
+* webencodings==0.5.1
+* Werkzeug==0.14.1
+* imbalance-learn==0.7.0
+
+
+Operating system used to run SEER dataset code
+* Ubuntu 18.04 operating system
+* x86-64 architecture
+* 22 cores
+* 32 GB RAM
+* 1 GPU
+* Runtime: Generally under 30 min, including data processing, training, predicting on the validation set.
+
+
+Requirements for the preprocessing codes & postprocessing codes (i.e., jupyter notebook files)
+
+
+Python package version requirements
+* python==3.8.5
+* pandas==1.2.1
+* scikit-learn==0.23.2
+* numpy==1.19.2
+
+
+Operating system used
+* Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz   
+* 64-bit operating system, x64-based processor
+* 32 GB RAM
+* Runtime: Less than 1 minute
+
+
+
+
+Demo 
+
+
+The demo is based on randomly generated data from https://github.com/stefanhgm/MLHC2018-reproducible-survival-seer. To reproduce the results in the paper, real data requested from SEER is required.
+
+
+Commands and outputs as follows:
+
+
+python3 main.py --incidences example/INCIDENCES.txt --specifications example/read.seer.research.nov2016.sas --cases example/CASES.csv --task survival60 --oneHotEncoding --model MLP --mlpLayers 2 --mlpWidth 20 --mlpEpochs 5 --mlpDropout 0.1 --importance --plotData --plotResults
+Using TensorFlow backend.                                                                                                                                                                                                                                                            Read ASCII data files. 
+Raw data: (10000; 133) cases and attributes 
+Filtered SEER*Stat cases from ASCII: (5000; 133) cases and attributes
+Remove irrelevant, combined, post-diagnosis, and treatment attributes: (5000; 960) cases and attributes
+Create target label indicating cancer survival for survival60: (2831; 959) cases and attributes                         Remove inputs with constant values: (2831; 925) cases and attributes 
+Data:  (2831, 925) -> x:(2831, 924), y:(2831,) 
+Train: x:(2264, 924), y:(2264,)
+Valid: x:(283, 924), y:(283,)
+Test:  x:(284, 924), y:(284,) 
+Train on 2264 samples, validate on 283 samples 
+Epoch 1/5 
+- 0s - loss: 0.4241 - acc: 0.8913 - val_loss: 0.2623 - val_acc: 0.9293
+Epoch 2/5 
+- 0s - loss: 0.3115 - acc: 0.9046 - val_loss: 0.2653 - val_acc: 0.9293 
+Epoch 3/5 
+ - 0s - loss: 0.2993 - acc: 0.9046 - val_loss: 0.2631 - val_acc: 0.9293                                                 Epoch 4/5 
+ - 0s - loss: 0.2795 - acc: 0.9046 - val_loss: 0.2662 - val_acc: 0.9293                                                 Epoch 5/5 
+- 0s - loss: 0.2532 - acc: 0.9046 - val_loss: 0.2795 - val_acc: 0.9293                                                 /mnt/c/Users/Wenjia Song/Documents/envs/reproducible-env/MLHC2018-reproducible-survival-seer/lib/experiment.py:388: RuntimeWarning: invalid value encountered in long_scalars
+precision0 = tn / (tn + fn) 
+Validation results: auc = 0.46482889733840305, f1 = 0.9633699633699635, acc = 0.9293286219081273, balanced_accuracy = 0.5, precision class 1 = 0.9293286219081273, recall class 1 = 1.0, f1 class 0 = nan, precision class 0 = nan, recall class 0 = 0.0, FPR = 1.0, FNR = 0.0       
+
+
+A folder is generated after executing the code, which contains the prediction results (test_results_data_frame.csv) on the validation set. Different metrics can be calculated using code from test_results.ipynb. 
+
+
+df = pd.read_csv('test_results_data_frame_example.csv')
+res = produce_all_results(df)
+write_results_to_file(res, 'result_metrics_example.csv')
+
+
+A sample file (result_metrics_example.csv) is also included.
