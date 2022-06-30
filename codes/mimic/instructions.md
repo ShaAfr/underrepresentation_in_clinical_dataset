@@ -12,18 +12,13 @@ MIMIC-III analysis steps
 7.	Determine the epoch from where we get the final model. Input run_output.txt in 1_epoch_to_consider.ipynb (`underrepresentation_in_clinical_dataset/codes/mimic/result_processing/1_epoch_to_consider.ipynb`)
 8.	Check the `run_output.txt` file and find out the model name for the specific epoch. For example, is the chosen epoch is 60, you can see a similar line in the run_output.txt file.
 `Epoch 00060: saving model to mimic3models/in_hospital_mortality/keras_states/{model_name}.state`
-9.	You test the model using the following command. 
+9.	You test the specific model using the following command. 
 `python -um mimic3models.in_hospital_mortality.main --network mimic3models/keras_models/lstm.py --dim 16 --depth 2 --batch_size 8 --dropout 0.3 --timestep 1.0 --load_state mimic3models/in_hospital_mortality/keras_states/{model_name}.state --mode test`
 10.	You will get the output data (subjects, predictions, true labels) from `mimic3-benchmarks/test_predictions/{model_name}.state.csv`
-11.	Take this csv file along with PATIENTS.csv and ADMISSIONS.csv (from MIMIC III) as input to `quick_analysis_from_output_csv.ipynb`. This will link samples with demographic information.
-12.	The output csv file from step 10 will be taken as input to `3_results in subgroups.ipynb`. It will find balanced accuracy, accuracy, recall_C1 (recall of minority group), recall_C0 (recall of majority group), precision_C1, precision_C0, F1_Score_C1, F1_Score_C0, AUROC, PR_Curve_C1, PR_Curve_CO of 14 demographic subgroups (Whole groups, Male, Female, White, Black, Asian, Hispanic, Age<30, Age between 30 and 40, Age between 40 and 50, Age between 50 and 60, Age between 60 and 70, Age between 70 and 80, Age between 80 to 90 and Age greater than 90)
-
-### DP Sampling (Modification of General Instructions)
-1.	At step 5 of general instruction, we will change the change listfile for undersampling and oversampling. 
-2.	For our proposed DP sampling in training data, use the existing training_listfile.csv file as input to the ipynb file of chosen minority group in `underrepresentation_in_clinical_dataset/codes/mimic/training_data_processing/dp/`
-3.	The ipynb file will generate 14 files (2 units to 20 units added training files). 
-4.	Follow the general instruction 6-11 with generated 14 training files. 
-5.	Use `dp_unit_choice.ipynb` file to identify which unit has optimum repetition of under represented population. 
-6.	Fing the performance of any specific underrepresented subgroup now with the chosen unit from previous step with `3_results in subgroups.ipynb` file.
-
-Note: for decompensation, the steps are similar. Just need to run decompansation commands and access decompensation train_listfile.csv
+11.	Repeat step 9 and 10 for getting the performance of validation set as well.
+12.	Put the validation csv file and test csv file in `csv_files/val/` and `csv_files/test/` folder.
+13.	We calibrate the predictions and choose optimal threshold result using `2_calibrated_sampling_and_optimal_threshold.ipynb`
+14.	Use PATIENTS.csv and ADMISSIONS.csv (from MIMIC III) as input to `3_quick_analysis.ipynb`. This will link samples with demographic information.
+15.	For DP model, `3_dp_choose_unit (only for DP -- run before 3_automated analysis_on_table).ipynb` will then choose dynamically which DP unit to choose. For other model, skip step 15.
+16.	The output csv file from previous steps will be taken as input to `4_automated_analysis_on_table_ihm`. It will find different metrices, i.e., balanced accuracy, accuracy, recall_C1 (recall of minority group), recall_C0 (recall of majority group), precision_C1, precision_C0, F1_Score_C1, F1_Score_C0, AUROC, PR_Curve_C1, PR_Curve_CO, MCC, FPR, FNR of 14 demographic subgroups (Whole groups, Male, Female, White, Black, Asian, Hispanic, Age<30, Age between 30 and 40, Age between 40 and 50, Age between 50 and 60, Age between 60 and 70, Age between 70 and 80, Age between 80 to 90 and Age greater than 90)
+17.	Compute different graph results using `5_ResultExtract*.csv` files
