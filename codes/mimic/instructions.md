@@ -5,7 +5,7 @@ MIMIC-III analysis steps
 1.	MIMIC III dataset can be downloaded from https://mimic.physionet.org/
 2.	We construct benchmark machine learning dataset from https://github.com/YerevaNN/mimic3-benchmarks using MIMIC III dataset
 3.	In the Benchmark GitHub, please follow the six steps specified in “Building a benchmark” subsection to create benchmark machine learning dataset for In-hospital mortality and decompensation prediction task. 
-4.	In the mimic3-benchmarks folder, put the ‘run_command.sh’ file.  (You can find it from: https://github.com/ShaAfr/underrepresentation_in_clinical_dataset/blob/main/codes/mimic/result_processing/run_command.sh)
+4.	In the mimic3-benchmarks folder, put the ‘run_command.sh’ file. This will run the training based on data in the `mimic3-benchmarks/data/in-hospital-mortality/train_listfile.csv`. You use the original train_listfile.csv or change the train_listfile.csv with sampling techniques (e.g., DP, oversampled, undersampled).  (You can find the run_command.sh from: https://github.com/ShaAfr/underrepresentation_in_clinical_dataset/blob/main/codes/mimic/result_processing/run_command.sh)
 5.	The training data is in mimic3-benchmarks/data/in-hospital-mortality/train_listfile.csv
 6.	Run the following command to save the output in run_output.txt file.
  `sh run_command.sh &>> run_output.txt`
